@@ -68,6 +68,7 @@
     "zip-build": "^1.7.0"
   },
   "dependencies": {
+    "@tauri-apps/api": "^1.0.2",
     "bpmn-js": "^8.7.0",
     "diagram-js": "^7.3.0",
     "diagram-js-direct-editing": "^1.6.3",

@@ -7,6 +7,7 @@ import { removeDirtyFlag } from './dirtyFlag';
 import { getTypeDictionary } from '../../language/icon/dictionaries';
 import { sanitizeForDesktop } from '../../util/Sanitizer';
 import { getIconset } from '../../language/icon/iconConfig';
+import { invoke } from '@tauri-apps/api/tauri'
 
 let infoText = document.getElementById('infoText');
 
@@ -14,20 +15,10 @@ export function downloadDST(filename, text) {
 
   let configAndDST = createConfigAndDst(text);
   let json =JSON.stringify(configAndDST);
-  let element = document.createElement('a');
 
   filename = sanitizeForDesktop(filename);
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(json));
-  element.setAttribute('download', filename + '.dst');
+  invoke('save_dst', {filename:filename, json: json});
 
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  removeDirtyFlag();
-
-  document.body.removeChild(element);
 }
 
 export function createObjectListForDSTDownload(version) {
