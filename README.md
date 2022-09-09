@@ -2,6 +2,10 @@
 
 A tool to visualize Domain Stories in your browser.
 
+### This fork
+
+This fork is a version that can be used in a [Tauri](https://tauri.app/) app.
+
 ### About
 
 <https://domainstorytelling.org>
